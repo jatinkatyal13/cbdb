@@ -1,0 +1,30 @@
+{
+  "name": "cbdb",
+  "version": "0.1.0",
+  "description": "Coding Blocks Database",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coding-blocks/cbdb.git"
+  },
+  "author": "Arnav Gupta <arnav@codingblocks.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coding-blocks/cbdb/issues"
+  },
+  "homepage": "https://github.com/coding-blocks/cbdb#readme",
+  "devDependencies": {
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "@jagql/framework": "^5.6.5",
+    "@jagql/store-sequelize": "^5.6.5",
+    "express-graphiql-toolbox": "^0.1.0",
+    "swagger-ui-express": "^3.0.8"
+  }
+}
