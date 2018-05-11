@@ -1,5 +1,5 @@
-import debug from 'debug'
 import SqlStore from '@jagql/store-sequelize'
+import debug from 'debug'
 
 const log = debug('cbdb:sqlhandler')
 export const getHandler = () => new SqlStore({
@@ -7,5 +7,5 @@ export const getHandler = () => new SqlStore({
   username: 'cbdbuser',
   password: 'cbdbpass',
   dialect: 'postgres',
-  logging: log
+  logging: log,
 })

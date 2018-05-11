@@ -19,7 +19,7 @@ jagql.setConfig({
       name: 'MIT',
       url: 'http://opensource.org/licenses/MIT',
     },
-  }
+  },
 })
 
 import './models'

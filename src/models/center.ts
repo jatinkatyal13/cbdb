@@ -20,7 +20,7 @@ jagql.define<Center>({
     name: Joi.string().required(),
     id: Joi.string().length(2).required(),
     contactNo: Joi.string().allow(null),
-    email: Joi.string().email().allow(null)
+    email: Joi.string().email().allow(null),
   },
   examples: [
     {id: 'PP', name: 'Pitampura', type: 'centers'},
@@ -31,7 +31,7 @@ jagql.define<Center>({
     {id: 'JB', name: 'Jabalpur', type: 'centers'},
     {id: 'LD', name: 'Ludhiana', type: 'centers'},
     {id: 'OL', name: 'Online', type: 'centers'},
-  ]
+  ],
 })
 
 handler.populate({force: true})
