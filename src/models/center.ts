@@ -19,8 +19,8 @@ jagql.define<Center>({
   attributes: {
     name: Joi.string().required(),
     id: Joi.string().length(2).required(),
-    contactNo: Joi.string(),
-    email: Joi.string().email()
+    contactNo: Joi.string().allow(null),
+    email: Joi.string().email().allow(null)
   },
   examples: [
     {id: 'PP', name: 'Pitampura', type: 'centers'},

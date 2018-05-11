@@ -4,6 +4,8 @@
   "description": "Coding Blocks Database",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node dist/server.js"
@@ -20,10 +22,11 @@
   "homepage": "https://github.com/coding-blocks/cbdb#readme",
   "devDependencies": {
     "@types/debug": "0.0.30",
+    "rimraf": "^2.6.2",
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@jagql/framework": "^5.6.9",
+    "@jagql/framework": "^5.6.11",
     "@jagql/store-sequelize": "^5.6.7",
     "debug": "^3.1.0",
     "express-graphiql-toolbox": "^0.1.0",
