@@ -19,12 +19,15 @@
   },
   "homepage": "https://github.com/coding-blocks/cbdb#readme",
   "devDependencies": {
+    "@types/debug": "0.0.30",
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@jagql/framework": "^5.6.5",
-    "@jagql/store-sequelize": "^5.6.5",
+    "@jagql/framework": "^5.6.8",
+    "@jagql/store-sequelize": "^5.6.6",
+    "debug": "^3.1.0",
     "express-graphiql-toolbox": "^0.1.0",
+    "pg": "^7.4.3",
     "swagger-ui-express": "^3.0.8"
   }
 }

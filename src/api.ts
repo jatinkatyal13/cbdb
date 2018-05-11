@@ -22,6 +22,8 @@ jagql.setConfig({
   }
 })
 
+import './models'
+
 export const server: Application = jagql.getExpressServer()
 export const start = jagql.start
 export const close = jagql.close
