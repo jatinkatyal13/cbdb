@@ -23,8 +23,8 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@jagql/framework": "^5.6.8",
-    "@jagql/store-sequelize": "^5.6.6",
+    "@jagql/framework": "^5.6.9",
+    "@jagql/store-sequelize": "^5.6.7",
     "debug": "^3.1.0",
     "express-graphiql-toolbox": "^0.1.0",
     "pg": "^7.4.3",

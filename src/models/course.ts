@@ -6,7 +6,7 @@ const Joi = jagql.Joi
 
 export interface Course {
   name: string
-  code: string
+  id: string
   batches?: Batch[]
 }
 
@@ -16,30 +16,31 @@ jagql.define<Course>({
   handlers: handler,
   resource: 'courses',
   namespace: 'cb',
-  primaryKey: 'autoincrement',
+  primaryKey: 'string',
   attributes: {
-    name: Joi.string().max(30),
-    code: Joi.string().length(3),
+    name: Joi.string().max(30).required(),
+    id: Joi.string().length(2),
     batches: Joi.belongsToMany({resource: 'batches', as: 'course'})
   },
   examples: [
-    {id: "1", type: "courses", name: "C++ for Beginners", code: "CPB"},
-    {id: "2", type: "courses", name: "Java for Beginners", code: "JVB"},
-    {id: "3", type: "courses", name: "LaunchPad", code: "CPP"},
-    {id: "4", type: "courses", name: "Crux", code: "CRX"},
-    {id: "5", type: "courses", name: "Algo++", code: "APP"},
-    {id: "6", type: "courses", name: "Algo.Java", code: "AJV"},
-    {id: "7", type: "courses", name: "Android", code: "AND"},
-    {id: "8", type: "courses", name: "Web Dev", code: "WEB"},
-    {id: "9", type: "courses", name: "Machine Learning", code: "MAL"},
-    {id: "10", type: "courses", name: "Python Beg", code: "PYB"},
-    {id: "11", type: "courses", name: "Python-Django", code: "PYD"},
-    {id: "12", type: "courses", name: "Python for ML", code: "PYM"},
-    {id: "13", type: "courses", name: "Interview Prep Bootcamp", code: "IPB"},
-    {id: "14", type: "courses", name: "Interview Prep Course", code: "IPC"},
-    {id: "15", type: "courses", name: "Competitive Coding", code: "CPC"},
-    {id: "16", type: "courses", name: "Advanced Java", code: "JVA"},
-    {id: "17", type: "courses", name: "Core Java", code: "JVC"}
+    {type: "courses", name: "C++ for Beginners", id: "CB"},
+    {type: "courses", name: "Java for Beginners", id: "JB"},
+    {type: "courses", name: "LaunchPad", id: "LP"},
+    {type: "courses", name: "Crux", id: "CX"},
+    {type: "courses", name: "Algo++", id: "AP"},
+    {type: "courses", name: "Algo.Java", id: "AJ"},
+    {type: "courses", name: "Android", id: "AD"},
+    {type: "courses", name: "Web Development in NodeJS", id: "WN"},
+    {type: "courses", name: "Machine Learning", id: "ML"},
+    {type: "courses", name: "Python for Beginners", id: "PY"},
+    {type: "courses", name: "Web Development in Django", id: "WD"},
+    {type: "courses", name: "Python for Data Science", id: "PD"},
+    {type: "courses", name: "Complete Interview Prep C++", id: "IC"},
+    {type: "courses", name: "Complete Interview Prep Java", id: "IJ"},
+    {type: "courses", name: "Interview Prep", id: "IP"},
+    {type: "courses", name: "Competitive Coding", id: "CC"},
+    {type: "courses", name: "Advanced Java", id: "JA"},
+    {type: "courses", name: "Core Java", id: "JC"}
   ]
 })
 
