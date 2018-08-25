@@ -34,7 +34,7 @@ jagql.define<Batch>({
   },
   examples: [
     {
-      id: 'CBPP18A', type: 'batches',
+      id: 'CBPP18S1', type: 'batches',
       course: {type: 'courses', id: 'CB'},
       center: {type: 'centers', id: 'PP'},
       lectureStartTime: '1000', lectureEndTime: '1400',

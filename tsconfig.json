@@ -9,6 +9,8 @@
     "rootDir": "src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "importHelpers": true,
+    "noEmitHelpers": true,
     "typeRoots": [
       "types"
     ]

@@ -1,5 +1,6 @@
 import jagql from '@jagql/framework'
 import {getHandler} from '../handlers/sqlHandler'
+import {Batch} from './batch'
 
 const Joi = jagql.Joi
 const handler = getHandler()
@@ -9,6 +10,7 @@ export interface Center {
   id: string
   contactNo?: string
   email?: string
+  batches?: Batch[]
 }
 
 jagql.define<Center>({
@@ -21,6 +23,7 @@ jagql.define<Center>({
     id: Joi.string().length(2).required(),
     contactNo: Joi.string().allow(null),
     email: Joi.string().email().allow(null),
+    batches: Joi.belongsToMany({resource: 'batches', as: 'center'}),
   },
   examples: [
     {id: 'PP', name: 'Pitampura', type: 'centers'},
