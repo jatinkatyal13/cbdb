@@ -2,8 +2,11 @@ import debug from 'debug'
 import graphiql from 'express-graphiql-toolbox'
 import swaggerUi from 'swagger-ui-express'
 import * as api from './api'
+import { authRoute } from './routes/auth'
 
 const log = debug('cbdb:server')
+
+api.server.use('/auth', authRoute)
 
 api.server.use('/docs', swaggerUi.serve,
   swaggerUi.setup(null, true, null, null, null,
