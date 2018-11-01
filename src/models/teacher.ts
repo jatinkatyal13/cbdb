@@ -29,4 +29,9 @@ jagql.define<Teacher>({
   ],
 })
 
-handler.populate({force: true})
+if (process.env.DB_POPULATE) {
+  handler.populate({
+    force: (process.env.DB_POPULATE === 'force'),
+    alter: (process.env.DB_POPULATE === 'alter'),
+  })
+}

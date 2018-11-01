@@ -9,7 +9,8 @@
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node dist/server.js"
+    "start": "cross-env node dist/server.js",
+    "watch": "cross-env DB_POPULATE=force DEBUG=* nodemon"
   },
   "repository": {
     "type": "git",
@@ -23,17 +24,18 @@
   "homepage": "https://github.com/coding-blocks/cbdb#readme",
   "devDependencies": {
     "@types/debug": "0.0.30",
+    "cross-env": "^5.2.0",
     "rimraf": "^2.6.2",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   },
   "dependencies": {
-    "@jagql/framework": "^5.6.11",
-    "@jagql/store-sequelize": "^5.6.7",
-    "debug": "^3.1.0",
+    "@jagql/framework": "^5.6.14",
+    "@jagql/store-sequelize": "^5.6.11",
+    "debug": "^4.1.0",
     "express-graphiql-toolbox": "^0.1.0",
     "pg": "^7.4.3",
-    "swagger-ui-express": "^3.0.10",
+    "swagger-ui-express": "^4.0.1",
     "tslib": "^1.9.3"
   }
 }
