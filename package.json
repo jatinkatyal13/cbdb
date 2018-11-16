@@ -9,8 +9,11 @@
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "cross-env node dist/server.js",
-    "watch": "cross-env DB_POPULATE=force DEBUG=* nodemon"
+    "start": "cross-env DB_POPULATE=alter node dist/server.js",
+    "predev": "tsc",
+    "dev": "cross-env DB_POPULATE=force DEBUG=* node dist/server.js",
+    "predev:watch": "tsc",
+    "dev:watch": "cross-env DB_POPULATE=force DEBUG=* nodemon"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 import jagql from '@jagql/framework'
-import {getHandler} from '../handlers/sqlHandler'
-import {Batch} from './batch'
+import { getHandler } from '../handlers/sqlHandler'
+import { Batch } from './batch'
 
 const Joi = jagql.Joi
 
@@ -9,6 +9,8 @@ export interface Course {
   id: string
   tagline?: string
   description?: string
+  hasOnline: boolean
+  hasOffline: boolean
   batches?: Batch[]
 }
 
@@ -22,27 +24,29 @@ jagql.define<Course>({
   attributes: {
     name: Joi.string().max(30).required(),
     id: Joi.string().length(2),
-    batches: Joi.belongsToMany({resource: 'batches', as: 'course'}),
+    batches: Joi.belongsToMany({ resource: 'batches', as: 'course' }),
+    hasOnline: Joi.boolean().default(false),
+    hasOffline: Joi.boolean().default(false),
   },
   examples: [
-    {type: 'courses', name: 'C++ for Beginners', id: 'CB'},
-    {type: 'courses', name: 'Java for Beginners', id: 'JB'},
-    {type: 'courses', name: 'LaunchPad', id: 'LP'},
-    {type: 'courses', name: 'Crux', id: 'CX'},
-    {type: 'courses', name: 'Algo++', id: 'AP'},
-    {type: 'courses', name: 'Algo.Java', id: 'AJ'},
-    {type: 'courses', name: 'Android', id: 'AD'},
-    {type: 'courses', name: 'Web Development in NodeJS', id: 'WN'},
-    {type: 'courses', name: 'Machine Learning', id: 'ML'},
-    {type: 'courses', name: 'Python for Beginners', id: 'PY'},
-    {type: 'courses', name: 'Web Development in Django', id: 'WD'},
-    {type: 'courses', name: 'Python for Data Science', id: 'PD'},
-    {type: 'courses', name: 'Complete Interview Prep C++', id: 'IC'},
-    {type: 'courses', name: 'Complete Interview Prep Java', id: 'IJ'},
-    {type: 'courses', name: 'Interview Prep', id: 'IP'},
-    {type: 'courses', name: 'Competitive Coding', id: 'CC'},
-    {type: 'courses', name: 'Advanced Java', id: 'JA'},
-    {type: 'courses', name: 'Core Java', id: 'JC'},
+    { type: 'courses', name: 'C++ for Beginners', id: 'CB', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Java for Beginners', id: 'JB', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'LaunchPad', id: 'LP', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Crux', id: 'CX', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Algo++', id: 'AP', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Algo.Java', id: 'AJ', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Android', id: 'AD', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Web Development in NodeJS', id: 'WN', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Machine Learning', id: 'ML', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Python for Beginners', id: 'PY', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Web Development in Django', id: 'WD', hasOffline: true, hasOnline: false },
+    { type: 'courses', name: 'Python for Data Science', id: 'PD', hasOffline: false, hasOnline: false },
+    { type: 'courses', name: 'Complete Interview Prep C++', id: 'IC', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Complete Interview Prep Java', id: 'IJ', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Interview Prep', id: 'IP', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Competitive Coding', id: 'CC', hasOffline: true, hasOnline: true },
+    { type: 'courses', name: 'Advanced Java', id: 'JA', hasOffline: true, hasOnline: false },
+    { type: 'courses', name: 'Core Java', id: 'JC', hasOffline: true, hasOnline: false },
   ],
 })
 

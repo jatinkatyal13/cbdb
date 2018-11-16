@@ -17,5 +17,5 @@ api.server.use('/docs', swaggerUi.serve,
 api.server.use('/graphiql', graphiql({endpoint: '/api/'}))
 
 api.start(() => {
-  log(`Server started on https://localhost:3232`)
+  console.log(`Server started on http://localhost:3232`)
 })

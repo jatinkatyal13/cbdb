@@ -9,6 +9,9 @@ const Joi = jagql.Joi
 
 export interface Batch {
   id: string
+  name: string
+  markedPrice: number
+  sellPrice: number
   center: Center | BaseType
   course: Course | BaseType
   startDate?: Date
@@ -26,7 +29,10 @@ jagql.define<Batch>({
   namespace: 'cb',
   primaryKey: 'string',
   attributes: {
-    id: Joi.string().max(8),
+    id: Joi.string().max(8).required(),
+    name: Joi.string().required(),
+    markedPrice: Joi.number(),
+    sellPrice: Joi.number(),
     center: Joi.one('centers'),
     course: Joi.one('courses'),
     teachers: Joi.many('teachers'),
@@ -38,6 +44,8 @@ jagql.define<Batch>({
   examples: [
     {
       id: 'CBPP18S1', type: 'batches',
+      name: 'C++ Beginners Pitampura 2018 Summer',
+      markedPrice: 599900, sellPrice: 399900,
       course: {type: 'courses', id: 'CB'},
       center: {type: 'centers', id: 'PP'},
       teachers: [
@@ -49,6 +57,8 @@ jagql.define<Batch>({
     },
     {
       id: 'JBPP18S1', type: 'batches',
+      name: 'Java Beginners Pitampura 2018 Summer',
+      markedPrice: 599900, sellPrice: 399900,
       course: {type: 'courses', id: 'JB'},
       center: {type: 'centers', id: 'PP'},
       teachers: [
