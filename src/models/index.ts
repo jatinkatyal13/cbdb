@@ -1,5 +1,10 @@
 // tslint:disable:ordered-imports
-import './center'
+import './member'
+import './course/course_subtopics'
+import './course/course_topics'
+import './course/course_faq'
+import './course/course_feature'
+import './course/course_review'
 import './course'
-import './teacher'
+import './center'
 import './batch'

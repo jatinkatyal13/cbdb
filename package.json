@@ -7,6 +7,7 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "lint": "tslint --config tslint.json --project tsconfig.json",
+    "lint:fix": "tslint --config tslint.json --project tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "cross-env DB_POPULATE=alter node dist/server.js",
@@ -37,6 +38,7 @@
     "@jagql/store-sequelize": "^5.6.11",
     "debug": "^4.1.0",
     "express-graphiql-toolbox": "^0.1.0",
+    "libphonenumber-js": "^1.6.9",
     "pg": "^7.4.3",
     "swagger-ui-express": "^4.0.1",
     "tslib": "^1.9.3"

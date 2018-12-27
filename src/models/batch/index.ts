@@ -2,7 +2,7 @@ import jagql, {BaseType} from '@jagql/framework'
 import {getHandler} from '../../handlers/sqlHandler'
 import {Center} from '../center'
 import {Course} from '../course'
-import {Teacher} from '../teacher'
+import { Member } from '../member'
 import ValidateIdHandler from './validateIdHandler'
 
 const Joi = jagql.Joi
@@ -18,7 +18,7 @@ export interface Batch {
   endDate?: Date
   lectureStartTime?: string
   lectureEndTime?: string,
-  teachers?: Array<Teacher | BaseType>
+  teachers?: Array<Member | BaseType>
 }
 
 const handler = getHandler()
@@ -35,7 +35,7 @@ jagql.define<Batch>({
     sellPrice: Joi.number(),
     center: Joi.one('centers'),
     course: Joi.one('courses'),
-    teachers: Joi.many('teachers'),
+    teachers: Joi.many('members'),
     startDate: Joi.date(),
     endDate: Joi.date(),
     lectureStartTime: Joi.string().length(4).regex(/([01]?[0-9]|2[0-3])[0-5][0-9]/),
@@ -49,7 +49,7 @@ jagql.define<Batch>({
       course: {type: 'courses', id: 'CB'},
       center: {type: 'centers', id: 'PP'},
       teachers: [
-        {id: 'PN', type: 'teachers'},
+        {id: 'PN', type: 'member'},
       ],
       lectureStartTime: '1000', lectureEndTime: '1400',
       startDate: new Date('2018-03-18'),
@@ -62,7 +62,7 @@ jagql.define<Batch>({
       course: {type: 'courses', id: 'JB'},
       center: {type: 'centers', id: 'PP'},
       teachers: [
-        {id: 'GC', type: 'teachers'},
+        {id: 'GC', type: 'member'},
       ],
       lectureStartTime: '0800', lectureEndTime: '1200',
       startDate: new Date('2018-03-18'),
