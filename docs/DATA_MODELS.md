@@ -101,4 +101,18 @@ class Teacher {
 
 ## Batch
 
-
+```ts
+class Batch {
+  teachers: Member[]
+  course: Course
+  center: Center
+  startDate: date
+  endDate: date
+  enrollmentStartDate: date
+  enrollmentEndDate: date
+  lectureStartTime: string // length 4 = military hours time like 1400
+  lectureEndTime: string // length 4 = military hours time like 1400
+  markedPrice: number
+  sellPrice: number
+}
+```
