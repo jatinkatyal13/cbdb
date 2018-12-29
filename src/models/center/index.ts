@@ -12,9 +12,9 @@ export interface Center {
   id: string
   contactNo: string // validate via google-libphonenumber
   email: string // Joi email
-  batches: Array<Batch | BaseType>
+  batches?: Array<Batch | BaseType>
   googleMapLink: string // url
-  incharge: Member | BaseType
+  incharge?: Member | BaseType
 }
 
 jagql.define<Center>({
@@ -32,6 +32,22 @@ jagql.define<Center>({
     incharge: Joi.belongsToMany({ resource: 'members', as: 'center' }),
   },
   examples: [
+    {
+      id: 'PP',
+      name: 'Pitampura',
+      contactNo: '+1800 274 4504',
+      email: 'info@codingblocks.com',
+      googleMapLink: 'https://www.google.com',
+      type: 'centers',
+    },
+    {
+      id: 'ND',
+      name: 'Noida',
+      contactNo: '+1800 274 4504',
+      email: 'info@codingblocks.com',
+      googleMapLink: 'https://www.google.com',
+      type: 'centers',
+    },
   ],
 })
 

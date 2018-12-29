@@ -5,6 +5,7 @@ import { CourseTopics } from './course_topics'
 const handler = getHandler()
 
 export interface CourseSubtopic {
+    id: string
     content: string
     course_topic: CourseTopics | BaseType
 }
@@ -15,6 +16,7 @@ jagql.define<CourseSubtopic>({
     namespace: 'cb',
     primaryKey: 'autoincrement',
     attributes: {
+        id: Joi.string(),
         content: Joi.string(),
         course_topic: Joi.one('course_topics'),
     },

@@ -1,12 +1,13 @@
-import jagql, { Joi } from '@jagql/framework'
+import jagql, { BaseType, Joi } from '@jagql/framework'
 import { Course } from '.'
 import { getHandler } from '../../handlers/sqlHandler'
 
 export interface CourseReview {
+    id: string
     reviewer: string
     imageUrl: string // url of image of reviewer
     body: string
-    course: Course
+    course?: Course | BaseType
     rating: number // [1-10 value, 4.5 stars == 9/10]
     link: string // link to original review location
 }
@@ -15,10 +16,11 @@ const handler = getHandler()
 
 jagql.define<CourseReview>({
     handlers: handler,
-    resource: 'course_review',
+    resource: 'course_reviews',
     namespace: 'cb',
     primaryKey: 'autoincrement',
     attributes: {
+        id: Joi.string(),
         reviewer: Joi.string(),
         imageUrl: Joi.string().uri(),
         body: Joi.string(),
@@ -27,6 +29,16 @@ jagql.define<CourseReview>({
         link: Joi.string().uri(),
     },
     examples: [
+        {
+            id: '1',
+            type: 'course_reviews',
+            reviewer: 'Jatin Katyal',
+            imageUrl: 'https://www.google.com',
+            body: 'Android course is LIT AF',
+            course: { type: 'courses', id: 'CB' },
+            rating: 10,
+            link: 'https://www.google.com',
+        },
     ],
 })
 

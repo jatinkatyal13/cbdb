@@ -45,6 +45,10 @@ jagql.define<Member>({
             role: 'admin',
             designation: 'Lead Instructor',
             order: 0,
+            courses: [
+                {type: 'courses', id: 'CB'},
+                {type: 'courses', id: 'JC'},
+            ],
         },
         {
             id: 'GC',

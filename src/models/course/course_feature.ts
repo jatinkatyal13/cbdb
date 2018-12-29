@@ -1,8 +1,10 @@
 import jagql, { BaseType, Joi } from '@jagql/framework'
+import { type } from 'os'
 import { Course } from '.'
 import { getHandler } from '../../handlers/sqlHandler'
 
 export interface CourseFeature {
+    id: string
     title: string
     icon: string
     description: string
@@ -17,12 +19,21 @@ jagql.define<CourseFeature>({
     namespace: 'cb',
     primaryKey: 'autoincrement',
     attributes: {
+        id: Joi.string(),
         title: Joi.string().max(40).required(),
         icon: Joi.string(),
         description: Joi.string(),
         course: Joi.one('courses'),
     },
     examples: [
+        {
+            id: '1',
+            title: 'Fundamentals',
+            icon: 'icon',
+            description: `We have designed our course keeping in mind the requirements of beginners.Course starts with fundamentals of logic building and problem solving.`,
+            course: {type: 'courses', id: 'CB'},
+            type: 'course_features',
+        },
     ],
 })
 

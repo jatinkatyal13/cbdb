@@ -3,24 +3,44 @@ import { Course } from '.'
 import { getHandler } from '../../handlers/sqlHandler'
 
 export interface CourseFAQ {
+    id: string
     question: string
     answer: string
-    course: Array<Course | BaseType>
+    courses?: Array<Course | BaseType>
 }
 
 const handler = getHandler()
 
 jagql.define<CourseFAQ>({
     handlers: handler,
-    resource: 'course_faq',
+    resource: 'course_faqs',
     namespace: 'cb',
     primaryKey: 'autoincrement',
     attributes: {
+        id: Joi.string(),
         question: Joi.string(),
         answer: Joi.string(),
-        course: Joi.many('courses'),
+        courses: Joi.many('courses'),
     },
     examples: [
+        {
+            id: '1',
+            question: 'What is JS?',
+            answer: 'JS is a sweet hell !',
+            courses: [
+                { type: 'courses', id: 'CB' },
+            ],
+            type: 'course_faqs',
+        },
+        {
+            id: '2',
+            question: 'What is TS?',
+            answer: 'Life saver maybe !',
+            courses: [
+                { type: 'courses', id: 'CB' },
+            ],
+            type: 'course_faqs',
+        },
     ],
 })
 

@@ -12,8 +12,8 @@ export interface Batch {
   name: string
   markedPrice: number
   sellPrice: number
-  center: Center | BaseType
-  course: Course | BaseType
+  center?: Center | BaseType
+  course?: Course | BaseType
   startDate?: Date
   endDate?: Date
   lectureStartTime?: string
@@ -46,27 +46,27 @@ jagql.define<Batch>({
       id: 'CBPP18S1', type: 'batches',
       name: 'C++ Beginners Pitampura 2018 Summer',
       markedPrice: 599900, sellPrice: 399900,
-      course: {type: 'courses', id: 'CB'},
-      center: {type: 'centers', id: 'PP'},
-      teachers: [
-        {id: 'PN', type: 'member'},
-      ],
       lectureStartTime: '1000', lectureEndTime: '1400',
       startDate: new Date('2018-03-18'),
       endDate: new Date('2018-04-15'),
+      teachers: [
+        {type: 'members', id: 'PN'},
+      ],
+      course: { type: 'courses', id: 'CB' },
+      center: { type: 'centers', id: 'PP' },
     },
     {
       id: 'JBPP18S1', type: 'batches',
       name: 'Java Beginners Pitampura 2018 Summer',
       markedPrice: 599900, sellPrice: 399900,
-      course: {type: 'courses', id: 'JB'},
-      center: {type: 'centers', id: 'PP'},
-      teachers: [
-        {id: 'GC', type: 'member'},
-      ],
       lectureStartTime: '0800', lectureEndTime: '1200',
       startDate: new Date('2018-03-18'),
       endDate: new Date('2018-04-15'),
+      teachers: [
+        {type: 'members', id: 'GC' },
+      ],
+      course: { type: 'courses', id: 'JC'},
+      center: { type: 'centers', id: 'ND' },
     },
   ],
 })
