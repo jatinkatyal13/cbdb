@@ -16,6 +16,8 @@ export interface Course {
   id: string
   tagline?: string
   description?: string
+  logo?: string
+  stickerPrice?: number
   courseType: CourseType
   batches?: Array<Batch | BaseType>
   features?: Array<CourseFeature | BaseType>
@@ -37,6 +39,8 @@ jagql.define<Course>({
     id: Joi.string().length(2),
     tagline: Joi.string(),
     description: Joi.string().max(2048),
+    logo: Joi.string().uri(),
+    stickerPrice: Joi.number().allow(null),
     courseType: Joi.string().allow('offline', 'online'),
     batches: Joi.belongsToMany({ resource: 'batches', as: 'course' }),
     features: Joi.belongsToMany({ resource: 'course_features', as: 'course' }),
@@ -56,6 +60,7 @@ jagql.define<Course>({
       The advanced course is for all those who are looking forward to sit for internships and placements. The course will involve rigorous practice of questions based on Sorting, Searching, Greedy Algorithms, Divide and Conquer Algorithms, Dynamic Programming along with comprehensive revision of data structures like linked-lists, Trees, Graphs, Heaps, Hashing etc.
 
       The course will help you become smarter with solutions and ace your programming interviews. C++ is known to be a very powerful language. It allows you to have a lot of control as to how you use computer resources effectively and efficiently better than other languages. Thanks to C++'s performance, it is often used to develop game engines, games, and desktop apps. As a statically typed language, C++ generally does better than dynamically typed languages because the code is type-checked before it is executed. Companies like Google and Facebook, also need C++ developers to optimize their apps or work on their products.`,
+      stickerPrice: 12000,
       courseType: 'offline',
     },
     {
@@ -66,6 +71,7 @@ jagql.define<Course>({
       description: `Begin your career in software development with the introduction to Data Structures and Algorithms in Java with the best Java institute in Delhi and learn from one of the most experienced mentors. Designed for beginners, this is a hands-on course where we focus on developing core programming concepts and equip you to code solutions for complex problems using Java at Coding Blocks, the best institute for programming in Delhi-NCR.
 
       The course content is firmly designed so as to suit the needs of the students and to help them combat as many obstacles as they’d encounter. The programme allows you to choose between Basic and Crux. You can also opt for Web Development using Java in one of the advanced Java courses.`,
+      stickerPrice: 12000,
       courseType: 'offline',
     },
   ],
