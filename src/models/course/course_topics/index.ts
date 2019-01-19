@@ -30,7 +30,7 @@ jagql.define<CourseTopics>({
         minLectures: Joi.number(),
         maxDuration: Joi.number(),
         minDuration: Joi.number(),
-        subtopics: Joi.belongsToMany({ resource: 'course_subtopics', as: 'course_topic' }),
+        subtopics: Joi.array().items(Joi.string()),
         course: Joi.one('courses'),
     },
     examples: [
@@ -42,6 +42,27 @@ jagql.define<CourseTopics>({
             minLectures: 5,
             maxDuration: 100,
             minDuration: 50,
+            subtopics: [
+                'Pseudo code',
+                'Getting started with C++, IDE Installation'
+            ],
+            course: {type: 'courses', id: 'CB'},
+            type: 'course_topics',
+        },
+        {
+            id: '2',
+            title: 'Getting started',
+            description: 'You will get started with python',
+            maxLectures: 10,
+            minLectures: 5,
+            maxDuration: 100,
+            minDuration: 50,
+            subtopics: [
+                'Pseudo code',
+                'Pseudo code',
+                'Pseudo code',
+                'Getting started with C++, IDE Installation'
+            ],
             course: {type: 'courses', id: 'CB'},
             type: 'course_topics',
         },

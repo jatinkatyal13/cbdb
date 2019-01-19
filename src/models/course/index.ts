@@ -14,6 +14,7 @@ export type CourseType = 'offline' | 'online'
 export interface Course {
   name: string
   id: string
+  slug: string
   tagline?: string
   description?: string
   logo?: string
@@ -37,9 +38,10 @@ jagql.define<Course>({
   attributes: {
     name: Joi.string().max(30).required(),
     id: Joi.string().length(2),
+    slug: Joi.string(),
     tagline: Joi.string(),
     description: Joi.string().max(2048),
-    logo: Joi.string().uri(),
+    logo: Joi.string().uri().allow(null),
     markedPrice: Joi.number().allow(null),
     courseType: Joi.string().allow('offline', 'online'),
     batches: Joi.belongsToMany({ resource: 'batches', as: 'course' }),
@@ -54,6 +56,7 @@ jagql.define<Course>({
       type: 'courses',
       name: 'C++ Launchpad',
       id: 'CB',
+      slug: 'c-plus-plus-for-beginners',
       tagline: 'Master DS & Algorithms in C++',
       description: `This C++ training course is designed to provide you with a platform from where you can start your journey in the amazing world of programming and software. The beginner's course will include programming fundamentals using C++, Loops, Functions, Arrays, Stacks, Queues, Linked List.
 
@@ -67,12 +70,25 @@ jagql.define<Course>({
       type: 'courses',
       name: 'Java Crux',
       id: 'JC',
+      slug: 'java-for-beginners',
       tagline: 'Data Structures & Algorithms In Java',
       description: `Begin your career in software development with the introduction to Data Structures and Algorithms in Java with the best Java institute in Delhi and learn from one of the most experienced mentors. Designed for beginners, this is a hands-on course where we focus on developing core programming concepts and equip you to code solutions for complex problems using Java at Coding Blocks, the best institute for programming in Delhi-NCR.
 
       The course content is firmly designed so as to suit the needs of the students and to help them combat as many obstacles as they’d encounter. The programme allows you to choose between Basic and Crux. You can also opt for Web Development using Java in one of the advanced Java courses.`,
       markedPrice: 12000,
       courseType: 'offline',
+    },
+    {
+      type: 'courses',
+      name: 'Java Crux Online',
+      id: 'JO',
+      slug: 'complete-java-course-online',
+      tagline: 'Data Structures & Algorithms In Java',
+      description: `Begin your career in software development with the introduction to Data Structures and Algorithms in Java with the best Java institute in Delhi and learn from one of the most experienced mentors. Designed for beginners, this is a hands-on course where we focus on developing core programming concepts and equip you to code solutions for complex problems using Java at Coding Blocks, the best institute for programming in Delhi-NCR.
+
+      The course content is firmly designed so as to suit the needs of the students and to help them combat as many obstacles as they’d encounter. The programme allows you to choose between Basic and Crux. You can also opt for Web Development using Java in one of the advanced Java courses.`,
+      markedPrice: 12000,
+      courseType: 'online',
     },
   ],
 })
